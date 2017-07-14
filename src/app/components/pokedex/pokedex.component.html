@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let pokemon of pokedex" (click)="onSelect(pokemon)">
+    <span>{{pokemon.name}}</span>
+  </li>
+</ul>
