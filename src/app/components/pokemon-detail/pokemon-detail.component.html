@@ -1,8 +1,28 @@
 <div *ngIf="pokemon">
-  <h2>{{pokemon.name}} details!</h2>
-  <div>
-    <div><label>id: </label>{{pokemon.id}}</div>
-    <div><label>name: </label>{{pokemon.name}}</div>
+  <div class="avatar-holder">
+    <img class="avatar" md-card-avatar src="{{pokemon.sprites.front_default}}">
   </div>
-  <button (click)="goBack()">Back</button>
+  <md-card class="card">
+    <md-card-title class="capitalize">{{pokemon.name}}</md-card-title>
+    <md-card-content>
+       <div class="infoLine">
+        <strong>Types:</strong>&nbsp;<span *ngFor="let item of pokemon.types; last as isLast">{{item.type.name}}<span *ngIf="!isLast">,&nbsp;</span></span>
+      </div>
+      <div class="infoLine">
+        <strong>Base Experience:</strong>&nbsp;{{pokemon.base_experience}}
+      </div>
+      <div class="infoLine">
+        <strong>Height:</strong>&nbsp;{{pokemon.height}}
+      </div>
+      <div class="infoLine">
+        <strong>Weight:</strong>&nbsp;{{pokemon.weight}}
+      </div>
+      <div class="infoLine">
+        <strong>Stats:</strong>
+        <ul class="statList">
+          <li *ngFor="let item of pokemon.stats">{{item.stat.name}}: {{item.base_stat}}</li>
+        </ul>
+      </div>
+    </md-card-content>
+  </md-card>
 </div>

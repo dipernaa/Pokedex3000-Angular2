@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Pokemon } from '../../classes/classes';
-import { PokedexService } from '../../services/pokedex.service';
+import { PokedexService } from '../../services/services';
 
 @Component({
   selector: 'pokedex',
@@ -15,14 +15,22 @@ export class PokedexComponent implements OnInit {
 
   constructor(private pokedexService: PokedexService, private router: Router) {}
 
+  ngOnInit(): void {
+    this.getPokedex();
+  }
+
   getPokedex(): void {
     this.pokedexService
       .getPokedex()
-      .then(pokedex => this.pokedex = pokedex);
-  }
+      .then(pokedex => this.pokedex = pokedex.sort((first, second) => {
+        if (first.name > second.name) {
+          return 1;
+        } else if (first.name < second.name) {
+          return -1;
+        }
 
-  ngOnInit(): void {
-    this.getPokedex();
+        return 0;
+      }));
   }
 
   onSelect(selectedPokemon: Pokemon): void {

@@ -5,8 +5,8 @@ import { PokedexComponent, PokemonDetailComponent } from './components/component
 
 const routes: Routes = [
   { path: '', redirectTo: '/pokedex', pathMatch: 'full' },
-  { path: 'pokedex',  component: PokedexComponent },
-  { path: 'detail',  component: PokemonDetailComponent }
+  { path: 'pokedex',  component: PokedexComponent, data: { title: 'Pokedex' } },
+  { path: 'detail',  component: PokemonDetailComponent, data: { showBackButton: true, title: 'Detail' } }
 ];
 
 @NgModule({

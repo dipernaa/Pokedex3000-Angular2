@@ -1,5 +1,3 @@
-<ul>
-  <li *ngFor="let pokemon of pokedex" (click)="onSelect(pokemon)">
-    <span>{{pokemon.name}}</span>
-  </li>
-</ul>
+<md-nav-list>
+  <md-list-item *ngFor="let pokemon of pokedex" class="capitalize" (click)="onSelect(pokemon)">{{pokemon.name}}</md-list-item>
+</md-nav-list>

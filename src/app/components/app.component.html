@@ -1,3 +1,7 @@
 <div>
-    <pokedex></pokedex>
+    <md-toolbar color="primary">
+        <button *ngIf="showBackButton" (click)="goBack()" md-icon-button><md-icon>arrow_back</md-icon></button>
+        {{title}}
+    </md-toolbar>
+    <router-outlet></router-outlet>
 </div>

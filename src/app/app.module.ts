@@ -1,11 +1,20 @@
+import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import {
+  MdButtonModule,
+  MdCardModule,
+  MdIconModule,
+  MdListModule,
+  MdToolbarModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent, PokedexComponent, PokemonDetailComponent } from './components/components';
-import { PokedexService } from './services/services';
+import { LayoutService, PokedexService } from './services/services';
 
 @NgModule({
   declarations: [
@@ -15,10 +24,18 @@ import { PokedexService } from './services/services';
   ],
   imports: [
     AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
-    HttpModule
+    HttpModule,
+
+    // Material Design Modules
+    MdButtonModule,
+    MdCardModule,
+    MdIconModule,
+    MdListModule,
+    MdToolbarModule
   ],
-  providers: [ PokedexService ],
+  providers: [ LayoutService, PokedexService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
