@@ -1,6 +1,6 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { PokemonDetail } from '../../classes/classes';
 import { PokedexService } from '../../services/services';
@@ -16,8 +16,11 @@ export class PokemonDetailComponent implements OnInit {
   constructor(private pokedexService: PokedexService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.pokedexService.getPokemonDetail(params.get('url')))
-      .subscribe(pokemon => this.pokemon = pokemon);
+    this.getPokemonDetail();
+  }
+
+  getPokemonDetail(): void {
+    this.pokedexService.getPokemonDetail(this.route.queryParams['value'].url)
+      .then(pokemon => this.pokemon = pokemon);
   }
 }

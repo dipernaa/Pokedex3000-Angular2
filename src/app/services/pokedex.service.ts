@@ -18,21 +18,21 @@ export class PokedexService {
   constructor(private http: Http) { }
 
   getPokedex(): Promise<Pokemon[]> {
-    // return this.http.get(this.pokedexUrl)
-    //   .toPromise()
-    //   .then(response => response.json().data as Pokemon[])
-    //   .catch(this.handleError);
+    return this.http.get(this.pokedexUrl)
+      .toPromise()
+      .then(response => response.json().data.results as Pokemon[])
+      .catch(this.handleError);
 
-    return Promise.resolve(pokedexTestData.data.results as Pokemon[]);
+    // return Promise.resolve(pokedexTestData.data.results as Pokemon[]);
   }
 
   getPokemonDetail(selectedPokemonUrl: string): Promise<PokemonDetail> {
-    // return this.http.get(`${this.pokemonDetailUrl}?url=${selectedPokemonUrl}`)
-    //   .toPromise()
-    //   .then(response => response.json().data as PokemonDetail)
-    //   .catch(this.handleError);
+    return this.http.get(`${this.pokemonDetailUrl}?url=${selectedPokemonUrl}`)
+      .toPromise()
+      .then(response => response.json().data as PokemonDetail)
+      .catch(this.handleError);
 
-    return Promise.resolve(pokemonDetailTestData.data as PokemonDetail);
+    // return Promise.resolve(pokemonDetailTestData.data as PokemonDetail);
   }
 
   private handleError(error: any): Promise<any> {
