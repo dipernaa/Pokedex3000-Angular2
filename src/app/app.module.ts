@@ -8,6 +8,7 @@ import {
   MdCardModule,
   MdIconModule,
   MdListModule,
+  MdProgressBarModule,
   MdToolbarModule
 } from '@angular/material';
 
@@ -33,6 +34,7 @@ import { LayoutService, PokedexService } from './services/services';
     MdCardModule,
     MdIconModule,
     MdListModule,
+    MdProgressBarModule,
     MdToolbarModule
   ],
   providers: [ LayoutService, PokedexService ],

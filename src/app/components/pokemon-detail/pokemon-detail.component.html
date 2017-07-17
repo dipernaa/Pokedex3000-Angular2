@@ -1,4 +1,6 @@
-<div *ngIf="pokemon">
+<md-progress-bar *ngIf="isLoading" color="accent" mode="indeterminate"></md-progress-bar>
+
+<div *ngIf="!isLoading && pokemon">
   <div class="avatar-holder">
     <img class="avatar" md-card-avatar src="{{pokemon.sprites.front_default}}">
   </div>

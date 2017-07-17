@@ -11,6 +11,7 @@ import { PokedexService } from '../../services/services';
   styleUrls: [ './pokemon-detail.component.css' ]
 })
 export class PokemonDetailComponent implements OnInit {
+  isLoading: boolean;
   pokemon: PokemonDetail;
 
   constructor(private pokedexService: PokedexService, private route: ActivatedRoute) {}
@@ -20,7 +21,14 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   getPokemonDetail(): void {
+    this.isLoading = true;
     this.pokedexService.getPokemonDetail(this.route.queryParams['value'].url)
-      .then(pokemon => this.pokemon = pokemon);
+      .then(pokemon => {
+        this.pokemon = pokemon
+        this.isLoading = false;
+      })
+      .catch(() => {
+        this.isLoading = false;
+      });
   }
 }

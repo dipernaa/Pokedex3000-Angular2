@@ -1,3 +1,5 @@
-<md-nav-list>
+<md-progress-bar *ngIf="isLoading" color="accent" mode="indeterminate"></md-progress-bar>
+
+<md-nav-list #elseBlock>
   <md-list-item *ngFor="let pokemon of pokedex" class="capitalize" (click)="onSelect(pokemon)">{{pokemon.name}}</md-list-item>
 </md-nav-list>
